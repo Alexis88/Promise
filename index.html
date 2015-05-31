@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8" />
+	<title>Promise</title>
+</head>
+<body>
+	<form id = "myForm" method = "post" action = "target.php">
+		<label for = "foo">Insert a value:</label>
+		<input type = "text" id = "foo" name = "foo" />
+		<input type = "submit" />
+	</form>
+	<script type = "text/javascript" src = "ajax.js"></script>
+	<script type = "text/javascript">
+		myForm.addEventListener("submit", function(event){
+			event.preventDefault();
+			ajax({
+				url: this.action,
+				method: this.method,
+				data:{
+					foo: foo.value
+				},
+				dataType: "JSON"
+			}).then(function(response){
+				console.log("Nice one!");
+				console.log(response);
+			}).catch(function(textError){
+				console.log("Oh, no!");
+				console.log(textError);
+			});
+		}, false);
+	</script>
+</body>
+</html>
