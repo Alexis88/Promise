@@ -1,5 +1,5 @@
 /**
- * Simple promise
+ * Simple XHR promise
  * @author	Alexis López Espinoza
  * @param	object	args (url, method, data, dataType, async)
  * @return	object XHR Promise
