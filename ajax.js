@@ -47,16 +47,21 @@ var ajax = function(args){
 
 		xhr.open(method, url, async);
 		xhr.addEventListener("load", function(){
-			switch (args.dataType.toUpperCase()){
-				case "XML":
-					response = xhr.responseXML;
-					break;
-				case "JSON":
-					response = JSON.parse(xhr.responseText);
-					break;
-				case "HTML": default:
-					response = xhr.responseText;
-					break;
+			if (args.dataType){
+				switch (args.dataType.toUpperCase()){
+					case "HTML":
+						response = xhr.responseText;
+						break;
+					case "XML":
+						response = xhr.responseXML;
+						break;
+					case "JSON":
+						response = JSON.parse(xhr.responseText);
+						break;					
+				}
+			}
+			else{
+				response = xhr.responseText;
 			}
 
 			if (xhr.status == 200){
