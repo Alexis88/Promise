@@ -23,18 +23,16 @@ var ajax = function(args){
 				}
 			}
 			else{
+				for (prop in args.data){
+					aux.push(prop + "=" + args.data[prop]);
+				}
+				
 				if (method == "GET"){
-					for (prop in args.data){
-						aux.push(prop + "=" + args.data[prop]);
-					}
 					url = args.url + "?" + aux.join("&");
 					data = null;
 				}
 				else{
 					url = args.url;
-					for (prop in args.data){
-						aux.push(prop + "=" + args.data[prop]);
-					}
 					data = aux.join("&");
 				}				
 			}
