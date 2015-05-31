@@ -9,11 +9,11 @@ var ajax = function(args){
 	return new Promise(function(done, error){
 		var xhr = new XMLHttpRequest(), method, url, response, data, async, aux = [];
 
-		method = args.method || "GET";
+		method = args.method.toUpperCase() || "GET";
 
 		if (args.data){
 			if (typeof args.data == "string"){
-				if (method.toUpperCase() == "GET"){
+				if (method == "GET"){
 					url = args.url + "?" + args.data;
 					data = null;
 				}
@@ -23,7 +23,7 @@ var ajax = function(args){
 				}
 			}
 			else{
-				if (method.toUpperCase() == "GET"){
+				if (method == "GET"){
 					for (prop in args.data){
 						aux.push(prop + "=" + args.data[prop]);
 					}
