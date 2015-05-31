@@ -23,7 +23,7 @@
 				dataType: "JSON"
 			}).then(function(response){
 				console.log("Nice one!");
-				console.log(response);
+				console.log("bin" in response ? response.bin : response);
 			}).catch(function(textError){
 				console.log("Oh, no!");
 				console.log(textError);
